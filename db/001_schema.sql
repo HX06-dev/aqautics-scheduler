@@ -3,6 +3,7 @@ CREATE TABLE staff (
     staff_name      text NOT NULL,
     staff_login     text NOT NULL UNIQUE,
     password_hash   text NOT NULL,
+    active          BOOLEAN NOT NULL DEFAULT TRUE,
     staff_type      text NOT NULL CHECK (staff_type in ('Instructor / Guard', 'Deck Coordinator', 'Admin'))
 );
 
