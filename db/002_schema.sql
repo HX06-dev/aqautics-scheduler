@@ -32,6 +32,6 @@ CREATE TABLE assignments (
         REFERENCES shifts (id, shift_start, shift_end, active)
         ON UPDATE CASCADE ON DELETE CASCADE,
 
-    EXCLUDE USING gist (staff_id WITH =, tstzrange(shift_start, shift_end) WITH &&)
+    CONSTRAINT no_double_booking EXCLUDE USING gist (staff_id WITH =, tstzrange(shift_start, shift_end) WITH &&)
         WHERE (shift_active)
 );
